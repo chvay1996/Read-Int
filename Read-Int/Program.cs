@@ -4,32 +4,25 @@ namespace ReadInt
 {
     class Program
     {
-        static int TryParse(string line, out int namber)
+        static int ConvertNumber(int namber)
         {
-            while (true)
+            string line;
+            bool check = false;
+
+            while (check == false)
             {
                 line = Console.ReadLine();
-                int.TryParse(line, out namber);
-
-                if (namber == 5)
-                {
-                    Console.WriteLine($"Вы ввели верное число {namber}");
-                    return namber;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели не верное число!");
-                    Console.Write("Попробуйте заново: ");
-                }
+                check = int.TryParse(line, out namber);
+                Console.WriteLine($"Вы ввели верное число {namber}");
             }
+            return namber;
         }
         static void Main(string[] args)
         {
-            string line = ""; 
             int namber = 0;
             Console.Write("Введите число: ");
 
-            TryParse(line, out namber);
+            ConvertNumber(namber);
         }
     }
 }

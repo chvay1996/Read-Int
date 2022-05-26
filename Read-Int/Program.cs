@@ -4,25 +4,30 @@ namespace ReadInt
 {
     class Program
     {
-        static int ConvertNumber(int namber)
-        {
-            string line;
-            bool check = false;
-
-            while (check == false)
-            {
-                line = Console.ReadLine();
-                check = int.TryParse(line, out namber);
-                Console.WriteLine($"Вы ввели верное число {namber}");
-            }
-            return namber;
-        }
-        static void Main(string[] args)
+        static void ConvertNumber()
         {
             int namber = 0;
             Console.Write("Введите число: ");
+            bool check = true;
 
-            ConvertNumber(namber);
+            while (check)
+            {
+                string line = Console.ReadLine();
+                if (int.TryParse(line, out namber))
+                {
+                    Console.WriteLine($"Вы ввели верное число {namber}");
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine($"Вы ввели не число, введите еще раз");
+                }
+
+            }
+        }
+        static void Main(string[] args)
+        {
+            ConvertNumber();
         }
     }
 }

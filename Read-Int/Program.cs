@@ -17,8 +17,9 @@ namespace ReadInt
             while (shouldStartConverting)
             {
                 string line = Console.ReadLine();
+                bool tryParse = int.TryParse(line, out namber);
 
-                if (int.TryParse(line, out namber))
+                if (tryParse)
                 {
                     Console.WriteLine($"Вы ввели верное число {namber}");
                     shouldStartConverting = false;
